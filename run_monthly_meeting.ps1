@@ -14,6 +14,7 @@ param(
     [string]$Period = "",
     [string]$DesignerSheet = "Sheet1",
     [string]$SalesSheet = "Worksheet",
+    [string]$BuildDirectory = "",
     [switch]$RefreshThumbnails,
     [switch]$KeepBuildFiles
 )
@@ -54,7 +55,7 @@ if (-not $OutputFile) {
 $outputResolved = [System.IO.Path]::GetFullPath($OutputFile)
 New-Item -ItemType Directory -Force -Path (Split-Path -Parent $outputResolved) | Out-Null
 
-$buildDir = Join-Path $scriptDir ".build"
+$buildDir = if ($BuildDirectory) { [System.IO.Path]::GetFullPath($BuildDirectory) } else { Join-Path $scriptDir ".build" }
 $previewDir = Join-Path $buildDir "meeting-preview"
 New-Item -ItemType Directory -Force -Path $buildDir | Out-Null
 $buildResolved = [System.IO.Path]::GetFullPath($buildDir).TrimEnd([System.IO.Path]::DirectorySeparatorChar)
