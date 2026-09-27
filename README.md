@@ -21,6 +21,19 @@
 
 默认文件名为 `美工月会_月份_完整可编辑版.pptx`。程序只在指定位置生成这一个 PPT；逐页预览、布局检查和临时数据保存在程序内部 `.build` 文件夹。
 
+## 从个人工作台启动
+
+在 `http://127.0.0.1:8787/` 左侧选择“美工月报 PPT”，点击“预览”，输入 `EXECUTE` 后点击“执行”，即可打开本助手。后续仍在桌面窗口录入作品、选择数据和生成 PPT，保存位置沿用窗口中的设置。
+
+工作台目录 `D:\desktop\codex\工作台` 也提供命令：
+
+```powershell
+python tools\workbench_run.py designer-monthly-ppt --dry-run
+python tools\workbench_run.py designer-monthly-ppt --execute
+```
+
+这是手动入口，不新增定时任务。工作台状态及历史仅记录助手启动情况，PPT 是否生成成功请以助手窗口提示为准；启动失败时检查本目录的 `app.ps1` 是否存在。
+
 ## 作品图片录入
 
 推荐直接复制粘贴，速度最快，不需要先整理文件夹。程序会把粘贴的图片保存到内部 `.build\clipboard-portfolio`，并按“身份/姓名”管理。一次也可以粘贴多张从资源管理器复制的图片。
